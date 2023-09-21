@@ -2,7 +2,7 @@
 
 I'm a self-taught, back-end developer with a love for Laravel, PHP, and APIs, currently living in Cairo Egypt.
 
-I've created a few helpful open-source applications and packages like [Licht](https://github.com/HossamSoliuman/licht),[laravel-ocr] and (https://github.com/HossamSoliuman/laravel-ocr).
+I've created a few helpful open-source applications and packages like [Licht](https://github.com/HossamSoliuman/licht) and [laravel-ocr](https://github.com/HossamSoliuman/laravel-ocr).
 
 You can find me on:
 
