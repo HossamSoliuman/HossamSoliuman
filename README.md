@@ -38,17 +38,6 @@ I actively build and maintain open-source projects:
   <img align="start" src="https://github-readme-streak-stats.herokuapp.com/?user=HossamSoliuman&count_private=true&theme=dracula&show_icons=true&hide=css&layout=compact&card_width=800" alt="HossamSoliuman GitHub Activity Streak" />
 </p>
 
----
-
-### GitHub Stats
-
-<a href="https://github.com/HossamSoliuman/github-readme-stats">
-  <img align="top" src="https://github-readme-stats.vercel.app/api?username=HossamSoliuman&hide=contribs&count_private=true&theme=dracula&show_icons=true&card_width=530" alt="Hossam Soliuman GitHub Stats" />
-</a>
-
-<a href="https://github.com/HossamSoliuman/github-readme-stats">
-  <img align="top" src="https://github-readme-stats.vercel.app/api/top-langs/?username=HossamSoliuman&count_private=true&theme=dracula&show_icons=true&hide=css&layout=compact&card_width=300" alt="Hossam Soliuman Most Used Languages" />
-</a>
 
 ---
 
