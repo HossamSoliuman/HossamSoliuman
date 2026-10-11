@@ -98,11 +98,24 @@ $hossam = [
 ## GitHub Activity
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/summary.svg" alt="1,151 contributions, 151 active days, 6 day current streak, 27 day longest streak, 59 public repositories" width="860">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/dark/summary.svg">
+  <img src="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/light/summary.svg" alt="Contribution totals, streaks and public repositories" width="860">
+</picture>
 </p>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/activity.svg" alt="Daily contribution activity over the last 12 months, peaking at 39 contributions in one day" width="860">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/dark/activity.svg">
+  <img src="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/light/activity.svg" alt="Daily contributions over the last 12 months with a 7-day average" width="860">
+</picture>
+</p>
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/dark/languages.svg">
+  <img src="https://raw.githubusercontent.com/HossamSoliuman/HossamSoliuman/main/assets/stats/light/languages.svg" alt="Top languages across my public repositories" width="860">
+</picture>
 </p>
 
 ---
