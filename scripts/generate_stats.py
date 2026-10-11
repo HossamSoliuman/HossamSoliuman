@@ -20,6 +20,8 @@ API = "https://api.github.com/graphql"
 
 # Markup and stylesheet bytes mostly come from bundled admin templates and
 # vendor assets, so they would drown out the languages actually written.
+# Each repository also counts once by its own language mix, so a single repo
+# with large bundled scripts cannot outweigh everything else.
 EXCLUDED_LANGUAGES = {"HTML", "CSS", "SCSS", "Sass", "Less"}
 TOP_LANGUAGES = 6
 
@@ -102,12 +104,14 @@ def fetch(login, token):
         user = graphql(token, PROFILE_QUERY, {"login": login, "after": after})["user"]
         page = user["repositories"]
         for repo in page["nodes"]:
-            for edge in repo["languages"]["edges"]:
+            edges = [e for e in repo["languages"]["edges"] if e["node"]["name"] not in EXCLUDED_LANGUAGES]
+            total = sum(e["size"] for e in edges)
+            for edge in edges:
                 name = edge["node"]["name"]
                 entry = languages.setdefault(
-                    name, {"name": name, "color": edge["node"]["color"], "size": 0}
+                    name, {"name": name, "color": edge["node"]["color"], "weight": 0}
                 )
-                entry["size"] += edge["size"]
+                entry["weight"] += edge["size"] / total
         if not page["pageInfo"]["hasNextPage"]:
             break
         after = page["pageInfo"]["endCursor"]
@@ -143,7 +147,7 @@ def fetch(login, token):
         "public_repos": user["publicRepos"]["totalCount"],
         "breakdown": breakdown,
         "days": dict(sorted(days.items())),
-        "languages": sorted(languages.values(), key=lambda lang: -lang["size"]),
+        "languages": sorted(languages.values(), key=lambda lang: -lang["weight"]),
     }
 
 
@@ -353,10 +357,10 @@ def render_activity(s, theme):
 def render_languages(s, theme):
     t = THEMES[theme]
     width, height = 860, 120
-    languages = [lang for lang in s["languages"] if lang["name"] not in EXCLUDED_LANGUAGES]
-    total = sum(lang["size"] for lang in languages) or 1
-    items = [(lang["name"], lang["color"] or t["other"], lang["size"]) for lang in languages[:TOP_LANGUAGES]]
-    rest = sum(lang["size"] for lang in languages[TOP_LANGUAGES:])
+    languages = s["languages"]
+    total = sum(lang["weight"] for lang in languages) or 1
+    items = [(lang["name"], lang["color"] or t["other"], lang["weight"]) for lang in languages[:TOP_LANGUAGES]]
+    rest = sum(lang["weight"] for lang in languages[TOP_LANGUAGES:])
     if rest:
         items.append(("Other", t["other"], rest))
 
@@ -383,7 +387,7 @@ def render_languages(s, theme):
             + "</g>"
         )
 
-    label = "Top languages by code size: " + ", ".join(
+    label = "Top languages across public repositories: " + ", ".join(
         f"{name} {size / total * 100:.1f}%" for name, _, size in items
     )
     return card(width, height, label, theme, "".join(parts))
